@@ -1541,7 +1541,7 @@
             text += `📅 *Bulan*: ${bulanText} ${tahun}\n`;
             text += `👤 *Karyawan*: ${userData.name}\n`;
             text += `📍 *Wilayah*: ${userData.domicile}\n`;
-            text += `📍 *Lokasi Kantor*: Benda, Kab. Sukabumi (Radius 100m)\n`;
+            text += `📍 *Lokasi Kantor*: Cicurug, Kab. Sukabumi\n`;
             text += `━━━━━━━━━━━━━━━━━━━━\n\n`;
             text += `📊 *RINGKASAN* 📊\n`;
             text += `✅ Hadir   : ${hadirCount} hari\n`;
@@ -1771,7 +1771,7 @@
             
             const dist = calculateDistance(userPos.lat, userPos.lng, TARGET_LOC.lat, TARGET_LOC.lng);
             if (dist > RADIUS) {
-                showToast("Anda berada di luar area kantor Benda, Sukabumi (Radius 100m)!");
+                showToast("Anda berada di luar area !");
                 return;
             }
             
