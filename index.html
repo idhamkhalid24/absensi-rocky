@@ -521,7 +521,7 @@
                         <li>Isi nama dan Domisili Staf</li>
                         <li>Klik "DAFTAR / LOGIN"</li>
                         <li>Aktifkan GPS untuk absen</li>
-                        <li>Coba absen masuk (dalam radius 100m)</li>
+                        <li>Coba absen masuk (dalam radius)</li>
                         <li>Coba fitur izin/sakit</li>
                         <li>Coba transaksi penjualan</li>
                         <li>Kirim laporan ke WhatsApp</li>
@@ -1154,7 +1154,7 @@
                 
                 if (dist <= RADIUS) {
                     if (indicator) indicator.className = "w-2 h-2 rounded-full bg-green-500 animate-pulse";
-                    if (text) text.innerHTML = `<span class="text-green-600 font-bold">Dalam Area Kantor (Radius 100m)</span>`;
+                    if (text) text.innerHTML = `<span class="text-green-600 font-bold">Dalam Area</span>`;
                     
                     if (!hasTodayAttendance() && btn) {
                         btn.disabled = false;
