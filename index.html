@@ -33,80 +33,9 @@
         .trial-badge {
             background: linear-gradient(135deg, #f97316, #dc2626);
         }
-        .verify-link {
-            color: #4f46e5;
-            word-break: break-all;
-            font-size: 10px;
-        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
-
-    <!-- MODAL VERIFIKASI HASH -->
-    <div id="modal-verify" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[100]">
-        <div class="bg-white rounded-[2.5rem] w-full max-w-md shadow-2xl overflow-hidden">
-            <div class="gradient-blue px-6 py-4 text-white">
-                <h2 class="text-lg font-extrabold">🔐 Verifikasi Keaslian Pesan</h2>
-                <p class="text-indigo-100 text-xs">Rocky Hijab Digital System</p>
-            </div>
-            
-            <div class="p-6" id="verify-result-container">
-                <div id="verify-loading" class="text-center py-6">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
-                    <p class="text-xs text-slate-500 mt-2">Memverifikasi hash...</p>
-                </div>
-                
-                <div id="verify-error" class="hidden text-center py-4">
-                    <div class="w-16 h-16 mx-auto mb-3 bg-red-100 rounded-full flex items-center justify-center">
-                        <span class="text-3xl text-red-600">❌</span>
-                    </div>
-                    <h3 class="text-base font-bold text-slate-800 mb-1">Hash Tidak Valid</h3>
-                    <p class="text-xs text-slate-500" id="verify-error-message">Link verifikasi rusak atau tidak valid</p>
-                </div>
-                
-                <div id="verify-success" class="hidden">
-                    <div class="text-center mb-4">
-                        <div class="w-16 h-16 mx-auto mb-3 bg-green-100 rounded-full flex items-center justify-center">
-                            <span class="text-3xl text-green-600">✅</span>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800">Hash Valid</h3>
-                        <p class="text-xs text-slate-500">Data asli dari pesan WhatsApp</p>
-                    </div>
-                    
-                    <div class="bg-slate-50 rounded-xl p-4 space-y-3">
-                        <div>
-                            <p class="text-[8px] text-slate-400 uppercase">Nama Karyawan</p>
-                            <p class="text-sm font-bold text-slate-800" id="verify-nama">-</p>
-                        </div>
-                        <div>
-                            <p class="text-[8px] text-slate-400 uppercase">Status</p>
-                            <p class="text-sm font-bold text-indigo-600" id="verify-status">-</p>
-                        </div>
-                        <div>
-                            <p class="text-[8px] text-slate-400 uppercase">Keterangan / Waktu</p>
-                            <p class="text-xs font-medium text-slate-600" id="verify-keterangan">-</p>
-                        </div>
-                        <div>
-                            <p class="text-[8px] text-slate-400 uppercase">Lokasi</p>
-                            <p class="text-xs font-mono text-slate-600" id="verify-lokasi">-</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-3 p-3 bg-blue-50 rounded-xl">
-                        <p class="text-[8px] text-blue-700 flex items-center gap-1">
-                            <span>ℹ️</span> Jika data di atas cocok dengan isi pesan WhatsApp, maka pesan ASLI dan TIDAK diedit.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="px-6 pb-6">
-                <button onclick="closeModal('modal-verify')" class="w-full py-3 gradient-blue text-white rounded-xl font-bold text-xs uppercase">
-                    Tutup
-                </button>
-            </div>
-        </div>
-    </div>
 
     <div class="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col relative custom-shadow" style="max-height: 95vh;">
         
@@ -148,7 +77,7 @@
         <div id="view-registration" class="relative z-10 p-8">
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
                 <div class="mb-6 text-center">
-                    <h2 class="text-lg font-bold text-slate-800">Pendaftaran Karyawan</h2>
+                    <h2 class="text-lg font-bold text-slate-800">Staf Only</h2>
                     <p class="text-xs text-slate-500">Gunakan nama asli untuk data absensi.</p>
                 </div>
                 
@@ -165,7 +94,7 @@
                         <!-- Mode Real -->
                         <button onclick="setMode('real')" id="mode-real" class="py-3 border-2 rounded-xl text-[10px] font-bold flex flex-col items-center gap-1 transition-all border-slate-200 bg-white">
                             <span class="text-indigo-500 text-lg">👤</span>
-                            <span class="text-slate-700">MODE KARYAWAN</span>
+                            <span class="text-slate-700">MODE STAF</span>
                             <span class="text-[7px] text-slate-400">Data tersimpan</span>
                         </button>
                     </div>
@@ -174,7 +103,7 @@
                 
                 <div class="space-y-4">
                     <input type="text" id="reg-name" placeholder="Nama Lengkap" class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 outline-none text-sm">
-                    <input type="text" id="reg-domicile" placeholder="Wilayah Tugas" class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 outline-none text-sm">
+                    <input type="text" id="reg-domicile" placeholder="Domisili Staf" class="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 outline-none text-sm">
                     <button id="btn-register" class="w-full py-4 gradient-blue text-white rounded-2xl font-bold shadow-lg">DAFTAR / LOGIN</button>
                 </div>
                 
@@ -231,7 +160,7 @@
             <!-- Informasi Lokasi Target dengan Radius 100m -->
             <div class="mb-3 px-2">
                 <p class="text-[8px] text-indigo-400 font-medium">
-                    📍 Area Absensi: Benda, Kab. Sukabumi (Radius 100m)
+                    📍 Area Absensi: Rocky Hijab
                 </p>
             </div>
 
@@ -589,7 +518,7 @@
                 <div class="p-3 bg-green-50 rounded-xl">
                     <p class="font-bold text-green-700 mb-1">✅ Langkah-langkah:</p>
                     <ol class="list-decimal pl-4 text-green-600 space-y-1">
-                        <li>Isi nama dan wilayah tugas</li>
+                        <li>Isi nama dan Domisili Staf</li>
                         <li>Klik "DAFTAR / LOGIN"</li>
                         <li>Aktifkan GPS untuk absen</li>
                         <li>Coba absen masuk (dalam radius 100m)</li>
@@ -662,85 +591,45 @@
         const TARGET_LOC = { lat: -6.767800, lng: 106.801265 };
         
         // ===== RADIUS 100 METER =====
-        const RADIUS = 100;
+        const RADIUS = 100; // Radius 100 meter
         
         const SECURITY_PIN = "170845";
-        const RESET_HOUR = 6;
-
-        // ===== URL VERIFIKASI UNTUK GITHUB PAGES ANDA =====
-        const VERIFY_URL = "https://idhamkhalid24.github.io/rocky-hijab/#verify=";
+        const RESET_HOUR = 6; // Reset jam 06:00 setiap hari
 
         let cart = [];
         let userData = { name: "", domicile: "" };
         let userPos = { lat: 0, lng: 0 };
         let pendingDeleteAction = null;
-        let lastAbsenData = null;
-        let isTrialMode = true;
+        let lastAbsenData = null; // Menyimpan data absensi terakhir untuk kirim ulang
+        let isTrialMode = true; // Default ke trial mode
 
         window.onload = () => {
             const options = { weekday: 'long', day: 'numeric', month: 'long' };
             document.getElementById('current-date').innerText = new Date().toLocaleDateString('id-ID', options);
             
+            // Isi pilihan tahun untuk rekap
             isiPilihanTahun();
-            checkHashFromUrl();
+            
+            // Set trial mode sebagai default
             setMode('trial');
             
+            // Cek apakah ada data tersimpan di localStorage (Mode Karyawan)
             const savedName = localStorage.getItem('rocky_user_name');
             if (savedName) {
+                // Jika ada data karyawan, langsung set ke mode real dan login
                 setMode('real');
                 userData.name = savedName;
                 userData.domicile = localStorage.getItem('rocky_user_dom');
+                
+                // Isi form registrasi dengan data yang sudah ada (hanya untuk tampilan)
                 document.getElementById('reg-name').value = savedName;
                 document.getElementById('reg-domicile').value = userData.domicile;
+                
                 initApp();
             }
         };
 
-        function checkHashFromUrl() {
-            const hash = window.location.hash;
-            if (hash && hash.startsWith('#verify=')) {
-                const encodedHash = hash.replace('#verify=', '');
-                openVerifyModal(encodedHash);
-            }
-        }
-
-        function openVerifyModal(encodedHash) {
-            const modal = document.getElementById('modal-verify');
-            const loading = document.getElementById('verify-loading');
-            const error = document.getElementById('verify-error');
-            const success = document.getElementById('verify-success');
-            
-            loading.classList.remove('hidden');
-            error.classList.add('hidden');
-            success.classList.add('hidden');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            setTimeout(() => {
-                try {
-                    const decodedHash = decodeURIComponent(encodedHash);
-                    const data = atob(decodedHash);
-                    const parts = data.split('|');
-                    
-                    if (parts.length >= 4) {
-                        document.getElementById('verify-nama').innerText = parts[0] || '-';
-                        document.getElementById('verify-status').innerText = parts[1] || '-';
-                        document.getElementById('verify-keterangan').innerText = parts[2] || '-';
-                        document.getElementById('verify-lokasi').innerText = parts[3] || '-';
-                        
-                        loading.classList.add('hidden');
-                        success.classList.remove('hidden');
-                    } else {
-                        throw new Error('Format hash tidak valid');
-                    }
-                } catch (e) {
-                    loading.classList.add('hidden');
-                    error.classList.remove('hidden');
-                    document.getElementById('verify-error-message').innerText = 'Hash rusak atau tidak valid';
-                }
-            }, 500);
-        }
-
+        // Fungsi untuk mengisi pilihan tahun (5 tahun terakhir)
         function isiPilihanTahun() {
             const tahunSelect = document.getElementById('rekap-tahun');
             if (!tahunSelect) return;
@@ -754,22 +643,33 @@
             tahunSelect.innerHTML = options;
         }
 
+        // Fungsi logout
         function logout() {
+            // Reset userData (tapi data di localStorage tetap)
             userData = { name: "", domicile: "" };
             
+            // Sembunyikan main view
             document.getElementById('main-nav').classList.add('hidden');
             document.getElementById('view-attendance').classList.add('hidden');
             document.getElementById('view-transaction').classList.add('hidden');
+            
+            // Tampilkan view registrasi
             document.getElementById('view-registration').classList.remove('hidden');
             
+            // Isi form registrasi dengan data yang tersimpan (jika ada)
             const savedName = localStorage.getItem('rocky_user_name');
             if (savedName) {
                 document.getElementById('reg-name').value = savedName;
                 document.getElementById('reg-domicile').value = localStorage.getItem('rocky_user_dom');
+                
+                // Nonaktifkan input agar tidak bisa diubah
                 document.getElementById('reg-name').disabled = true;
                 document.getElementById('reg-domicile').disabled = true;
+                
+                // Ubah teks tombol
                 document.getElementById('btn-register').innerText = "LOGIN KEMBALI";
             } else {
+                // Jika tidak ada data (mode trial), aktifkan input
                 document.getElementById('reg-name').disabled = false;
                 document.getElementById('reg-domicile').disabled = false;
                 document.getElementById('reg-name').value = "";
@@ -777,33 +677,41 @@
                 document.getElementById('btn-register').innerText = "DAFTAR / LOGIN";
             }
             
+            // Tutup semua modal
             closeModal('modal-logout');
             closeModal('modal-menu');
+            
             showToast("Berhasil keluar");
         }
 
+        // Fungsi untuk membuka modal menu
         function openMenuModal() {
             openModal('modal-menu');
         }
 
+        // Fungsi untuk membuka modal backup dari menu
         function openBackupModalFromMenu() {
             closeModal('modal-menu');
             openModal('modal-backup');
         }
 
+        // Fungsi untuk membuka modal reset dari menu
         function openResetModalFromMenu() {
             closeModal('modal-menu');
             openResetModal();
         }
 
+        // Fungsi untuk membuka modal logout
         function openLogoutModal() {
             closeModal('modal-menu');
             openModal('modal-logout');
         }
 
+        // Fungsi untuk mengatur mode (Trial / Real)
         function setMode(mode) {
             isTrialMode = (mode === 'trial');
             
+            // Update tampilan tombol
             const btnTrial = document.getElementById('mode-trial');
             const btnReal = document.getElementById('mode-real');
             const trialInfo = document.getElementById('trial-info');
@@ -819,12 +727,14 @@
                 if (trialBadge) trialBadge.classList.remove('hidden');
                 if (modeDesc) modeDesc.innerText = "Mode Trial: Data tidak disimpan permanen, untuk pembelajaran";
                 
+                // Aktifkan input untuk trial mode
                 document.getElementById('reg-name').disabled = false;
                 document.getElementById('reg-domicile').disabled = false;
                 document.getElementById('reg-name').value = "";
                 document.getElementById('reg-domicile').value = "";
                 document.getElementById('btn-register').innerText = "DAFTAR / LOGIN";
                 
+                // Tampilkan modal tutorial saat pertama kali memilih trial
                 if (!sessionStorage.getItem('tutorial_shown')) {
                     setTimeout(() => {
                         openModal('modal-tutorial');
@@ -839,14 +749,17 @@
                 if (trialBadge) trialBadge.classList.add('hidden');
                 if (modeDesc) modeDesc.innerText = "Mode Karyawan: Data tersimpan permanen di browser";
                 
+                // Cek apakah sudah ada data tersimpan
                 const savedName = localStorage.getItem('rocky_user_name');
                 if (savedName) {
+                    // Jika sudah ada, nonaktifkan input
                     document.getElementById('reg-name').value = savedName;
                     document.getElementById('reg-domicile').value = localStorage.getItem('rocky_user_dom');
                     document.getElementById('reg-name').disabled = true;
                     document.getElementById('reg-domicile').disabled = true;
                     document.getElementById('btn-register').innerText = "LOGIN KEMBALI";
                 } else {
+                    // Jika belum ada, aktifkan input
                     document.getElementById('reg-name').disabled = false;
                     document.getElementById('reg-domicile').disabled = false;
                     document.getElementById('reg-name').value = "";
@@ -856,8 +769,10 @@
             }
         }
 
+        // Override fungsi localStorage untuk trial mode
         function getStorage(key, defaultValue = "[]") {
             if (isTrialMode) {
+                // Di trial mode, gunakan sessionStorage (sementara)
                 return sessionStorage.getItem(key) || defaultValue;
             } else {
                 return localStorage.getItem(key) || defaultValue;
@@ -880,8 +795,9 @@
             }
         }
 
+        // Fungsi untuk cek dan reset data harian pada jam 06:00
         function checkAndResetDailyData() {
-            if (isTrialMode) return;
+            if (isTrialMode) return; // Tidak perlu reset di trial mode
             
             const now = new Date();
             const lastReset = getStorage('rocky_last_reset_date');
@@ -889,6 +805,7 @@
             
             if (now.getHours() >= RESET_HOUR && lastReset !== today) {
                 setStorage('rocky_last_reset_date', today);
+                
                 if (userData.name) {
                     checkTodayAbsen();
                     updateTransactionAccess();
@@ -896,6 +813,7 @@
             }
         }
 
+        // Fungsi untuk mengecek apakah sudah absen/izin hari ini
         function hasTodayAttendance() {
             const hist = JSON.parse(getStorage('rocky_history') || "[]");
             const today = new Date().toLocaleDateString('id-ID');
@@ -907,6 +825,7 @@
             });
         }
 
+        // Fungsi untuk mengecek apakah sudah absen HADIR hari ini
         function hasTodayPresent() {
             const hist = JSON.parse(getStorage('rocky_history') || "[]");
             const today = new Date().toLocaleDateString('id-ID');
@@ -918,6 +837,7 @@
             });
         }
 
+        // Fungsi untuk mendapatkan data absensi hari ini
         function getTodayAttendance() {
             const hist = JSON.parse(getStorage('rocky_history') || "[]");
             const today = new Date().toLocaleDateString('id-ID');
@@ -929,6 +849,7 @@
             });
         }
 
+        // Fungsi untuk mengupdate akses ke fitur transaksi
         function updateTransactionAccess() {
             const hasPresent = hasTodayPresent();
             
@@ -1112,10 +1033,12 @@
             }
         }
 
+        // Cek apakah sudah absen/izin hari ini
         function checkTodayAbsen() {
             const hist = JSON.parse(getStorage('rocky_history') || "[]");
             const today = new Date().toLocaleDateString('id-ID');
             
+            // Cari data absensi hari ini (Hadir, Sakit, Izin, dll)
             const todayAttendance = hist.find(h => {
                 if (h.type === 'Transaksi') return false;
                 const recordDate = new Date(h.rawDate).toLocaleDateString('id-ID');
@@ -1127,14 +1050,18 @@
             const resendContainer = document.getElementById('resend-container');
             
             if (todayAttendance) {
+                // Sudah absen/izin hari ini
                 if (btnAbsen) {
                     btnAbsen.disabled = true;
                     btnAbsen.className = "w-full py-5 bg-slate-200 text-slate-400 rounded-3xl font-bold text-lg mb-4 uppercase tracking-wide";
                     
+                    // Simpan data absensi untuk kirim ulang (UNTUK SEMUA JENIS)
                     lastAbsenData = todayAttendance;
                     
+                    // Tampilkan tombol kirim ulang untuk SEMUA jenis absensi
                     if (resendContainer) resendContainer.classList.remove('hidden');
                     
+                    // Ubah teks tombol absen sesuai jenis
                     if (todayAttendance.type === 'Hadir') {
                         btnAbsen.innerText = "SUDAH ABSEN HADIR HARI INI";
                     } else {
@@ -1142,21 +1069,25 @@
                     }
                 }
                 
+                // Nonaktifkan tombol izin
                 if (btnIzin) {
                     btnIzin.disabled = true;
                     btnIzin.classList.add('opacity-50', 'cursor-not-allowed');
                 }
                 
             } else {
+                // Belum absen/izin hari ini
                 if (btnAbsen) btnAbsen.innerText = "Absen Masuk";
                 if (btnIzin) {
                     btnIzin.disabled = false;
                     btnIzin.classList.remove('opacity-50', 'cursor-not-allowed');
                 }
                 
+                // Sembunyikan tombol kirim ulang
                 if (resendContainer) resendContainer.classList.add('hidden');
                 lastAbsenData = null;
                 
+                // Update status GPS untuk enable/disable tombol absen
                 if (userPos.lat !== 0 && btnAbsen) {
                     const dist = calculateDistance(userPos.lat, userPos.lng, TARGET_LOC.lat, TARGET_LOC.lng);
                     if (dist <= RADIUS) {
@@ -1172,6 +1103,7 @@
             updateTransactionAccess();
         }
 
+        // --- Reward System (FILTER BULAN INI SAJA) ---
         function updateRewardSystem() {
             const txHist = JSON.parse(getStorage('rocky_tx_history') || "[]");
             const now = new Date();
@@ -1202,6 +1134,7 @@
             }
         }
 
+        // --- GPS Logic ---
         function startGPS() {
             if (!navigator.geolocation) return;
             navigator.geolocation.watchPosition(p => {
@@ -1213,6 +1146,7 @@
                 const koordinatContainer = document.getElementById('koordinat-container');
                 const koordinatText = document.getElementById('koordinat-text');
                 
+                // Update koordinat display
                 if (koordinatContainer && koordinatText) {
                     koordinatContainer.classList.remove('hidden');
                     koordinatText.innerText = `${userPos.lat.toFixed(6)}, ${userPos.lng.toFixed(6)}`;
@@ -1245,15 +1179,18 @@
             return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         }
 
+        // --- FUNGSI COPY KOORDINAT ---
         function copyKoordinat() {
             const koordinatText = document.getElementById('koordinat-text');
             if (!koordinatText) return;
             
             const koordinat = koordinatText.innerText;
             
+            // Copy ke clipboard
             navigator.clipboard.writeText(koordinat).then(() => {
                 showToast("✅ Koordinat disalin!");
             }).catch(() => {
+                // Fallback untuk browser lama
                 const tempInput = document.createElement("textarea");
                 tempInput.value = koordinat;
                 document.body.appendChild(tempInput);
@@ -1264,6 +1201,7 @@
             });
         }
 
+        // --- Transaction Logic ---
         document.getElementById('btn-add-cart').onclick = () => {
             if (!hasTodayPresent()) {
                 showToast("Anda harus absen HADIR hari ini!");
@@ -1352,6 +1290,7 @@
             hist.push(record);
             setStorage('rocky_history', JSON.stringify(hist));
             
+            // Jika ini absensi (Hadir, Sakit, Izin, dll), simpan untuk kirim ulang
             if (type !== 'Transaksi') {
                 lastAbsenData = record;
             }
@@ -1399,6 +1338,7 @@
             }
         }
 
+        // --- MODAL & SECURITY FUNCTIONS ---
         function openModal(id) { 
             if (id === 'modal-report' && !hasTodayPresent()) {
                 showToast("Anda harus absen HADIR hari ini!");
@@ -1420,9 +1360,13 @@
             }
         }
 
-        function openBackupModal() { }
+        function openBackupModal() { 
+            // Fungsi ini dipanggil dari tombol di modal menu
+            // Tidak perlu melakukan apa-apa karena sudah di-handle oleh openBackupModalFromMenu
+        }
         
         function openRekapBulanModal() { 
+            // Update pilihan tahun saat modal dibuka
             isiPilihanTahun();
             openModal('modal-rekap-bulan'); 
         }
@@ -1449,6 +1393,7 @@
             openModal('modal-security');
         }
 
+        // --- SUBMIT IZIN FUNCTION ---
         document.getElementById('btn-submit-izin').onclick = () => {
             if (hasTodayAttendance()) {
                 showToast("Anda sudah absen/izin hari ini!");
@@ -1459,20 +1404,24 @@
             const type = document.getElementById('izin-type').value;
             const reason = document.getElementById('izin-reason').value.trim() || 'Tanpa alasan';
             
+            // Simpan ke riwayat lokal
             saveRecord(type, reason);
             
+            // Buat pesan dengan hash verifikasi
             const waktu = new Date().toLocaleString('id-ID');
             const dataAsli = `${userData.name}|${type}|${reason}|${waktu}|${userPos.lat},${userPos.lng}`;
-            const hash = btoa(dataAsli);
-            const verifyLink = VERIFY_URL + encodeURIComponent(hash);
+            const hash = btoa(dataAsli); // Encode sebagai verifikasi sederhana
             
-            const msg = `*IZIN/SAKIT*%0ANama: ${userData.name}%0AStatus: ${type}%0AAlasan: ${reason}%0AWaktu: ${waktu}%0ALokasi: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: %0A${verifyLink}%0A%0A_Klik link di atas untuk verifikasi keaslian pesan_`;
+            // Kirim ke WhatsApp dengan hash
+            const msg = `*IZIN/SAKIT*%0ANama: ${userData.name}%0AStatus: ${type}%0AAlasan: ${reason}%0AWaktu: ${waktu}%0ALokasi: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: ${hash}%0A_hash akan digunakan untuk verifikasi keaslian_`;
             
             window.location.href = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${msg}`;
             
+            // Tutup modal
             closeModal('modal-izin');
             showToast("Izin terkirim");
             
+            // Update status tombol
             setTimeout(checkTodayAbsen, 500);
         };
 
@@ -1502,6 +1451,7 @@
             }
         };
 
+        // ==================== FUNGSI RESET SEMUA DATA ====================
         document.getElementById('btn-confirm-reset').onclick = () => {
             const resetPin = document.getElementById('reset-pin').value;
             
@@ -1533,11 +1483,14 @@
                 location.reload();
             }, 1500);
         };
+        // ================================================================
 
+        // ==================== FUNGSI REKAP BULANAN ====================
         function kirimRekapBulanan() {
             const bulanIndex = parseInt(document.getElementById('rekap-bulan').value);
             const tahun = parseInt(document.getElementById('rekap-tahun').value);
             
+            // Nama bulan dalam Bahasa Indonesia
             const namaBulan = [
                 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
                 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
@@ -1545,14 +1498,18 @@
             
             const bulanText = namaBulan[bulanIndex];
             
+            // Ambil data history dari storage
             const hist = JSON.parse(getStorage('rocky_history') || "[]");
             
+            // Filter data untuk bulan dan tahun yang dipilih (HANYA absensi, bukan transaksi)
             const dataBulanIni = hist.filter(item => {
-                if (item.type === 'Transaksi') return false;
+                if (item.type === 'Transaksi') return false; // Abaikan transaksi
+                
                 const itemDate = new Date(item.rawDate);
                 return itemDate.getMonth() === bulanIndex && itemDate.getFullYear() === tahun;
             });
             
+            // Urutkan berdasarkan tanggal
             const dataTerurut = [...dataBulanIni].sort((a, b) => new Date(a.rawDate) - new Date(b.rawDate));
             
             if (dataTerurut.length === 0) {
@@ -1561,6 +1518,7 @@
                 return;
             }
             
+            // Hitung statistik
             let hadirCount = 0, sakitCount = 0, izinCount = 0;
             let totalHari = 0;
             const hariKerja = {};
@@ -1570,6 +1528,7 @@
                 else if (item.type === 'Sakit') sakitCount++;
                 else if (item.type === 'Izin Keperluan' || item.type === 'Setengah Hari') izinCount++;
                 
+                // Hitung per hari (untuk mengetahui hari kerja)
                 const tgl = new Date(item.rawDate).toLocaleDateString('id-ID');
                 if (!hariKerja[tgl]) {
                     hariKerja[tgl] = true;
@@ -1577,6 +1536,7 @@
                 }
             });
             
+            // Format pesan WhatsApp
             let text = `🏢 *REKAP ABSENSI BULANAN* 🏢\n\n`;
             text += `📅 *Bulan*: ${bulanText} ${tahun}\n`;
             text += `👤 *Karyawan*: ${userData.name}\n`;
@@ -1610,18 +1570,23 @@
             
             text += `\n📱 *Dikirim via Rocky Hijab Digital System*`;
             
+            // Kirim ke WhatsApp
             window.location.href = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encodeURIComponent(text)}`;
             
+            // Tutup modal
             closeModal('modal-rekap-bulan');
             showToast(`Rekap ${bulanText} ${tahun} terkirim`);
         }
+        // ================================================================
 
+        // ==================== FITUR KIRIM ULANG (UNTUK SEMUA JENIS ABSENSI) ====================
         document.getElementById('btn-resend-absen').onclick = () => {
             if (!lastAbsenData) {
                 showToast("Tidak ada data absensi untuk dikirim ulang");
                 return;
             }
             
+            // Tentukan emoji dan prefix berdasarkan jenis absensi
             let emoji = "📝";
             let prefix = "IZIN/SAKIT";
             
@@ -1636,16 +1601,19 @@
                 prefix = "IZIN";
             }
             
+            // Buat hash verifikasi dari data asli
             const dataAsli = `${userData.name}|${lastAbsenData.type}|${lastAbsenData.note}|${lastAbsenData.date} ${lastAbsenData.time}|${userPos.lat},${userPos.lng}`;
             const hash = btoa(dataAsli);
-            const verifyLink = VERIFY_URL + encodeURIComponent(hash);
             
-            const msg = `${emoji} *${prefix} (KIRIM ULANG)*%0ANama: ${userData.name}%0AStatus: ${lastAbsenData.type}%0AWaktu Absen Asli: ${lastAbsenData.date} ${lastAbsenData.time}%0AWaktu Kirim Ulang: ${new Date().toLocaleString('id-ID')}%0A%0A📝 *Keterangan*: ${lastAbsenData.note}%0A📍 *Lokasi*: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: %0A${verifyLink}%0A%0A_Klik link di atas untuk verifikasi keaslian pesan_`;
+            // Kirim ulang ke WhatsApp dengan data yang sama (tanpa mengubah timestamp)
+            const msg = `${emoji} *${prefix} (KIRIM ULANG)*%0ANama: ${userData.name}%0AStatus: ${lastAbsenData.type}%0AWaktu Absen Asli: ${lastAbsenData.date} ${lastAbsenData.time}%0AWaktu Kirim Ulang: ${new Date().toLocaleString('id-ID')}%0A%0A📝 *Keterangan*: ${lastAbsenData.note}%0A📍 *Lokasi*: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: ${hash}%0A_hash digunakan untuk verifikasi keaslian_`;
             
             window.location.href = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${msg}`;
             showToast(`Mengirim ulang data ${lastAbsenData.type}...`);
         };
+        // =================================================================
 
+        // --- UTILITY FUNCTIONS ---
         function exportData() {
             const data = {
                 user: {
@@ -1738,16 +1706,16 @@
                 tx.items.forEach(it => items[it.nama] = (items[it.nama] || 0) + it.qty);
             });
             
+            // Buat hash verifikasi
             const dataAsli = `${userData.name}|${title}|${totalOmzet}|${JSON.stringify(items)}|${new Date().toISOString()}`;
             const hash = btoa(dataAsli);
-            const verifyLink = VERIFY_URL + encodeURIComponent(hash);
             
             let msg = `*LAPORAN ${title}*%0A`;
             msg += `Karyawan: ${userData.name}%0A`;
             msg += `Total Omzet: Rp ${totalOmzet.toLocaleString()}%0A`;
             msg += `--------------------%0A`;
             for (let name in items) msg += `- ${name}: ${items[name]} pcs%0A`;
-            msg += `%0A🔐 *VERIFIKASI*: %0A${verifyLink}%0A%0A_Klik link di atas untuk verifikasi keaslian laporan_`;
+            msg += `%0A🔐 *VERIFIKASI*: ${hash}%0A__`;
             
             window.location.href = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${msg}`;
             closeModal('modal-report');
@@ -1767,13 +1735,16 @@
             if(!n || !d) return showToast("Lengkapi pendaftaran!");
             
             if (isTrialMode) {
+                // Trial mode: simpan di sessionStorage
                 sessionStorage.setItem('rocky_user_name', n);
                 sessionStorage.setItem('rocky_user_dom', d);
                 userData = { name: n, domicile: d }; 
                 initApp();
             } else {
+                // Real mode: cek apakah sudah ada data
                 const savedName = localStorage.getItem('rocky_user_name');
                 if (savedName) {
+                    // Jika sudah ada, gunakan data yang tersimpan (tidak bisa diganti)
                     if (savedName !== n) {
                         showToast("Nama tidak bisa diubah! Gunakan nama yang sama");
                         return;
@@ -1783,6 +1754,7 @@
                         domicile: localStorage.getItem('rocky_user_dom') 
                     };
                 } else {
+                    // Jika belum ada, simpan data baru
                     localStorage.setItem('rocky_user_name', n);
                     localStorage.setItem('rocky_user_dom', d);
                     userData = { name: n, domicile: d };
@@ -1806,12 +1778,12 @@
             setStorage('rocky_last_absen', new Date().toLocaleDateString());
             saveRecord('Hadir', 'Absen Masuk (GPS) - Benda, Sukabumi');
             
+            // Buat hash verifikasi
             const waktu = new Date().toLocaleString('id-ID');
             const dataAsli = `${userData.name}|Hadir|${waktu}|${userPos.lat},${userPos.lng}`;
             const hash = btoa(dataAsli);
-            const verifyLink = VERIFY_URL + encodeURIComponent(hash);
             
-            const msg = `✅ *ABSENSI MASUK*%0ANama: ${userData.name}%0AWaktu: ${waktu}%0ALokasi: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: %0A${verifyLink}%0A%0A_Klik link di atas untuk verifikasi keaslian absen_`;
+            const msg = `✅ *ABSENSI MASUK*%0ANama: ${userData.name}%0AWaktu: ${waktu}%0ALokasi: Benda, Kab. Sukabumi (https://maps.google.com/?q=${userPos.lat},${userPos.lng})%0A%0A🔐 *VERIFIKASI*: ${hash}%0A__`;
             
             window.location.href = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${msg}`;
             
